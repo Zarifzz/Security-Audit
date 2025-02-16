@@ -3,23 +3,28 @@
 ## Table of Contents
 1. [Introduction](#introduction)
 2. [Scenario](#scenario)
-3. [Internal Security Audit Workflow](#workflow)
+3. [Audit Methodology](#audit-methodology)
 4. [Controls Assessment](#control-assessment)
 5. [Compliance Checklist](#compliance-checklist)
-6. [Stakeholder Memorandum](#stakeholder-memo)
+6. [Remediation](#remediation)
 7. [Conclusion](#conclusion)
 
 ---
 
 ## Introduction <a name="introduction"></a>
-This security audit was conducted for **Botium Toys**, a fictitious toy company, as part of my cybersecurity portfolio. This audit follows **industry best practices and frameworks** such as:
+This security audit was conducted for **Botium Toys**, as part of my cybersecurity portfolio. This audit follows **industry best practices and compliance checks** such as:
 
 - **National Institute of Standards and Technology Cybersecurity Framework (NIST CSF)**
 - **Payment Card Industry Data Security Standard (PCI DSS)**
 - **General Data Protection Regulation (GDPR)**
 - **System and Organization Controls (SOC 1 & 2)**
 
-The primary goal of this audit is to **assess Botium Toys’ security posture, identify vulnerabilities, and recommend mitigation strategies** to strengthen its cybersecurity defenses.
+This case study presents a security audit of Botium Toys, conducted using the **NIST Cybersecurity Framework (CSF)**. The audit aimed to identify security gaps, assess risk exposure, and recommend actionable improvements.
+
+### **Objectives**
+- Assess Botium Toys' cybersecurity posture.
+- Identify vulnerabilities in key security areas.
+- Provide recommendations to mitigate security risks.
 
 ---
 
@@ -35,51 +40,62 @@ The IT team aims to **align security practices with industry standards** while e
 
 ---
 
-## Internal Security Audit Workflow <a name="workflow"></a>
-The security audit was divided into two parts:
+## Audit Methodology <a name="audit-methodology"></a>
+The audit was structured around the five core functions of NIST CSF:
 
-### **Part 1: Audit Execution**
-1. Define **scope, goals, and risk assessment**
-2. Conduct **Controls Assessment**
-   - Identify missing or weak security controls
-   - Classify controls based on priority
-3. Complete **Compliance Checklist**
-   - Evaluate compliance with PCI DSS, GDPR, SOC 1 & 2
+| **Function** | **Purpose** |
+|-------------|------|
+| **Identify** | Understand assets, risks, and governance. |
+| **Protect** | Implement safeguards against cyber threats. |
+| **Detect** | Identify cybersecurity incidents in real time. |
+| **Respond** | Establish processes for responding to threats. |
+| **Recover** | Ensure business continuity after a security event.|
 
-### **Part 2: Findings & Recommendations**
-1. **Summarize findings** from Part 1
-2. **Document recommendations** in a **Stakeholder Memorandum**
-3. **Deliver actionable security improvements**
+### **Assessment Approach**
+The audit evaluates **Administrative, Technical, and Physical security controls** into what control type it is:
+
+Control types include, but are not limited to:
+- Preventative
+- Corrective
+- Detective
+- Deterrent
+
+In addition to these specifications the audit also evaluates which **NIST CSF function** each control falls into. 
+
 
 ---
 
 ## Controls Assessment <a name="control-assessment"></a>
-The audit evaluates **Administrative, Technical, and Physical security controls** using the following categories:
+
 
 ### **Administrative Controls**
-| Control Name | Type | Status | Priority |
-|-------------|------|--------|----------|
-| Least Privilege | Preventative | Not Implemented | High |
-| Disaster Recovery Plans | Corrective | Not Implemented | High |
-| Password Policies | Preventative | Not Implemented | High |
-| Access Control Policies | Preventative | Not Implemented | High |
-| Separation of Duties | Preventative | Not Implemented | High |
+| Control Name         | Type         | Status          | Priority | NIST CSF Function | Comments |
+|----------------------|-------------|----------------|----------|-------------------|----------|
+| Least Privilege     | Preventative | Not Implemented | High     | **Protect (PR.AC-4)** - Manage access permissions and enforce least privilege. | All employees have access to customer data |
+| Disaster Recovery Plans | Corrective | Not Implemented | High  | **Recover (RC.RP-1)** - Ensure recovery processes and disaster planning. | There are no disaster recovery plans in place |
+| Password Policies   | Preventative | Not Implemented | High     | **Protect (PR.AC-1)** - Enforce password security measures. | Employee password requirements are minimal |
+| Access Control Policies | Preventative | Not Implemented | High | **Protect (PR.AC-1, PR.AC-3)** - Manage user authentication and access. | No policies put in place |
+| Separation of Duties | Preventative | Not Implemented | High  | **Protect (PR.AC-5)** - Restrict privileges based on job roles. | Company CEO currently runs day-to-day operations and manages the payroll, this increases possibility of fraud/access to critical data |
+| Legacy System Monitoring | Detective | Implemented | N/A | **Detect (DE.CM-7)** - Identify security anomalies in outdated systems. | Systems are monitored and Maintined |
+| Legacy System Patch Management | Corrective | Not Implemented | High | **Protect (PR.IP-12)** - Ensure security patches are applied when available. | Legacy systems are on old patches |
+| Manual Security Audits for Legacy Systems | Detective | Not Implemented | High | **Identify (ID.RA-1, ID.RA-2)** - Assess risks and vulnerabilities in legacy environments. | There are no future Audits/Procedure policy in place for Legacy Systems |
 
 ### **Technical Controls**
-| Control Name | Type | Status | Priority |
-|-------------|------|--------|----------|
-| Firewall | Preventative | Implemented | N/A |
-| Intrusion Detection System (IDS) | Detective | Not Implemented | High |
-| Encryption | Deterrent | Not Implemented | High |
-| Backups | Corrective | Not Implemented | High |
-| Antivirus Software | Corrective | Not Implemented | High |
+| Control Name         | Type         | Status          | Priority | NIST CSF Function | Comments |
+|----------------------|-------------|----------------|----------|-------------------|----------|
+| Firewall            | Preventative | Implemented    | N/A      | **Protect (PR.PT-3)** - Secure network boundaries. | In place, but should be regularly reviewed and updated |
+| Intrusion Detection System (IDS) | Detective | Not Implemented | High | **Detect (DE.CM-1, DE.CM-7)** - Monitor network activity and detect anomalies. | No IDS in place |
+| Encryption          | Deterrent    | Not Implemented | High     | **Protect (PR.DS-1, PR.DS-2)** - Encrypt sensitive data at rest and in transit. | Encryption is not currently used |
+| Backups            | Corrective   | Not Implemented | High     | **Recover (RC.RP-1, RC.RP-2)** - Ensure data restoration and continuity. | No Backups of critical data |
+| Antivirus Software  | Corrective   | Implemented | N/A     | **Protect (PR.IP-12)** - Implement anti-malware solutions. | Implemented but must be regularly updated |
+| Password Manager for Employees | Preventative | Not Implemented | Medium | **Protect (PR.AC-1)** - Secure password storage and management. | No Password management system in place |
 
 ### **Physical Controls**
-| Control Name | Type | Status | Priority |
-|-------------|------|--------|----------|
-| CCTV Surveillance | Preventative | Not Implemented | High |
-| Locks (Offices, Storefront, Warehouse) | Preventative | Not Implemented | High |
-| Fire Detection & Prevention | Detective | Not Implemented | Medium |
+| Control Name         | Type         | Status          | Priority | NIST CSF Function | Comments |
+|----------------------|-------------|----------------|----------|-------------------|----------|
+| CCTV Surveillance   | Preventative | Implemented | N/A     | **Detect (DE.AE-1, DE.AE-2)** - Enable physical security monitoring. | CCTV Surveillance works properly |
+| Locks (Offices, Storefront, Warehouse) | Preventative | Implemented | N/A | **Protect (PR.AC-2)** - Restrict physical access to assets. | Lock in place and policies to lock and unlock are set |
+| Fire Detection & Prevention | Detective | Implemented | N/A | **Protect (PR.IP-10)** - Prevent and detect environmental threats. | All  fire protection systems work and in place |
 
 ---
 
@@ -87,66 +103,86 @@ The audit evaluates **Administrative, Technical, and Physical security controls*
 Botium Toys must comply with the following regulations:
 
 ### **Payment Card Industry Data Security Standard (PCI DSS)**
-✔ Enforce **secure credit card storage & transmission**
-✔ Implement **data encryption** for transactions
-✔ Adopt **password management policies**
+| Yes/No | Best Practice | Explanation |
+|--------|--------------|-------------|
+| ❌ No | Only authorized users have access to customers’ credit card information. | All employees have access to the company’s internal data |
+| ❌ No | Credit card information is accepted, processed, transmitted, and stored internally, in a secure environment. | No encryption in place for credit card information, and all employees currently have access to internal data, including customers’ credit card information |
+| ❌ No | Implement data encryption procedures to better secure credit card transaction touchpoints and data. | No encryption in place to ensure the confidentiality of customers’ financial information |
+| ❌ No | Adopt secure password management policies. | Password policies are nominal, and no password management system in place |
 
 ### **General Data Protection Regulation (GDPR)**
-✔ Ensure **EU customer data privacy**
-✔ Implement **breach notification procedures (72-hour rule)**
-✔ Classify and secure sensitive data
+| Yes/No | Best Practice | Explanation |
+|--------|--------------|-------------|
+| ❌ No | E.U. customers’ data is kept private/secured. | No Encryption in place to ensure the confidentiality of customers’ financial information |
+| ✅ Yes | There is a plan in place to notify E.U. customers within 72 hours if their data is compromised/there is a breach. | Policy/plan in place to notify E.U. customers within 72 hours of a data breach |
+| ❌ No | Ensure data is properly classified and inventoried. | Current assets are inventoried/listed, but not classified |
+| ✅ Yes | Enforce privacy policies, procedures, and processes to properly document and maintain data. | Privacy policies, procedures, and processes have been developed and enforced |
 
-### **System and Organization Controls (SOC 1 & 2)**
-✔ Establish **User Access Policies**
-✔ Protect **sensitive personal and financial data**
-✔ Maintain **data integrity and availability**
+### **System and Organization Controls (SOC Type 1, SOC Type 2)**
+| Yes/No | Best Practice | Explanation |
+|--------|--------------|-------------|
+| ❌ No | User access policies are established. | Controls of Least Privilege and Separation of Duties are not in place; all employees have access to internally stored data |
+| ❌ No | Sensitive data (PII/SPII) is confidential/private. | Encryption is not used to better ensure the confidentiality of PII/SPII |
+| ✅ Yes | Data integrity ensures the data is consistent, complete, accurate, and has been validated. | Data integrity is in place |
+| ❌ No | Data is available to individuals authorized to access it. | All employees have access to internally stored data; No authorization in place |
 
 ---
 
-## Stakeholder Memorandum <a name="stakeholder-memo"></a>
-### **TO:** IT Manager, Stakeholders  
-### **FROM:** Security Audit Team  
-### **SUBJECT:** Internal IT Audit Findings and Recommendations  
+## Remediation <a name="remediation"></a>
 
-### **Scope & Goals:**
-- Ensure compliance with **PCI DSS, GDPR, SOC 1 & 2**
-- Implement **Least Privilege & Access Controls**
-- Develop a **Disaster Recovery Plan**
-- Enhance **encryption & IDS implementation**
+### Critical Findings (Immediate Action Required)
 
-### **Critical Findings:**
-🚨 *Immediate action required for:* 
-- **Password & Access Control Policies**
-- **Intrusion Detection System (IDS) implementation**
-- **Encryption for transactions & sensitive data**
-- **Backups & disaster recovery planning**
-- **Physical security measures (CCTV, Locks, Fire Protection)**
+1. **Principle of Least Privilege & Separation of Duties:**  
+   Controls need to be developed and implemented to enforce strict adherence to the Principle of Least Privilege and Separation of Duties to minimize risk and improve access control across the organization.
 
-### **Recommendations:**
-✔ Implement **Multi-Factor Authentication (MFA)**  
-✔ Deploy **Intrusion Detection System (IDS) & Logging**  
-✔ Strengthen **encryption for financial transactions**  
-✔ Enforce **strict password & user access policies**  
-✔ Conduct **regular security awareness training**  
+2. **Disaster Recovery Plans (DRP):**  
+   A robust disaster recovery plan should be established to ensure business continuity in the event of an unforeseen disaster, such as a physical fire or cyberattack.
+
+3. **Password, Access Control & Account Management Policies:**  
+   Development and enforcement of comprehensive password, access control, and account management policies to ensure that user credentials are managed securely.
+
+4. **Intrusion Detection System (IDS):**  
+   An IDS should be deployed to monitor network traffic, detect potential intrusions, and mitigate risks effectively.
+
+5. **Encryption Protocols:**  
+   Encryption measures for sensitive information, both in-transit (secure website transactions) and at-rest (disk drives containing sensitive data), must be implemented to ensure data confidentiality.
+
+6. **Backups:**  
+   Regular and secure backups should be conducted to ensure data integrity and availability in the event of an incident.
+
+7. **Password Management System:**  
+   Implement a password management system to enhance the security and management of user credentials.
+
+8. **Manual Monitoring for Legacy Systems:**  
+   Legacy systems should continue to be monitored manually, ensuring any vulnerabilities are quickly identified and addressed.
+
+
+### Policies to be Developed & Implemented
+
+- **PCI DSS & GDPR Compliance:**  
+   Policies and procedures must be created to meet the requirements of PCI DSS and GDPR, particularly given Botium Toys' expansion into international markets, including the European Union.
+
+- **SOC1 and SOC2 Compliance:**  
+   User access policies and data protection practices should be aligned with SOC1 and SOC2 standards to enhance security and ensure proper controls are in place.
+
+### Additional Findings (Future Considerations)
+
+- **Physical Security Enhancements:**  
+   Once the critical findings are addressed, further physical security measures should be considered:
+   - **Time-Controlled Safe** to protect high-value items.
+   - **Adequate Lighting** in sensitive areas.
+   - **Signage indicating Alarm Service Provider** in restricted areas to notify personnel of monitored zones.
+
+
 
 ---
 
 ## Conclusion <a name="conclusion"></a>
-This security audit identified **several high-risk vulnerabilities** that need immediate mitigation to improve Botium Toys’ cybersecurity posture. By implementing the **recommended security measures**, the company can:
 
-- Reduce the risk of **data breaches & cyberattacks**
-- Ensure **compliance with global security regulations**
-- Strengthen **business continuity & resilience**
+To ensure Botium Toys remains compliant with PCI DSS, GDPR, and SOC1/SOC2, it is essential to prioritize the critical findings outlined above. Addressing these issues promptly will secure customer data, strengthen internal controls, and protect against potential threats. 
 
-**Self-Evaluation:**  
-This audit challenged my ability to analyze security risks and align them with compliance frameworks. I improved my skills in **security control evaluation, compliance assessment, and stakeholder communication**.
+The implementation of disaster recovery plans, IDS, AV software, and encryption will enhance data resilience, while physical security measures such as CCTV, locks, and fire detection systems will safeguard both digital and physical assets. 
 
-**Lessons Learned:**  
-I refined my approach to **summarizing findings concisely for stakeholders**, ensuring technical details were understandable for business decision-makers.
+By taking these necessary steps, Botium Toys will improve its overall security posture, mitigate risks, and ensure a secure environment for its growing operations.
 
-🚀 *This project demonstrates my expertise in cybersecurity auditing, vulnerability assessment, and regulatory compliance.*
 
----
-
-**[Download Full Audit Report (PDF)](your-report-link.com)**  
-**[GitHub Repository - Security Audit Scripts & Findings](your-github.com)**
